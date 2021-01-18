@@ -1,0 +1,30 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="big_burger_registration">Big Burger  Registration</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="streetRegistration">Street*</string>
+    <string name="houseRegistration">House*</string>
+    <string name="flatRegistration">Flat*</string>
+    <string name="postalCodeRegistration">Postal Code*</string>
+    <string name="CityRegistration">City*</string>
+    <string name="login">Login</string>
+    <string name="register_now">REGISTER NOW</string>
+    <string name="by_signing_up_you_agree_with_our">By signing up, you agree with our</string>
+    <string name="terms_amp_conditions"><![CDATA[Terms & Conditions]]></string>
+    <string name="logo" translatable="false">logo</string>
+    <string name="ic_lock" translatable="false">ic_lock</string>
+    <string name="open" translatable="false">Open navigation></string>
+    <string name="close" translatable="false">Close navigation</string>
+    <string name="save">save</string>
+    <string name="house" tools:ignore="DuplicateDefinition">House</string>
+    <string name="street" tools:ignore="DuplicateDefinition">Street</string>
+    <string name="postal_code" tools:ignore="DuplicateDefinition">Postal Code</string>
+    <string name="flat" tools:ignore="DuplicateDefinition">Flat</string>
+    <string name="city" tools:ignore="DuplicateDefinition">City</string>
+    <string name="back">Back</string>
+    <string name="account">Account</string>
+    <string name="menu">Menu</string>
+    <string name="orders">Orders</string>
+    <string name="app_name">Big Burger</string>
+</resources>

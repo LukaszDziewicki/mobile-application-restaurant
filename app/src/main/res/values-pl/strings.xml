@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Big Burger</string>
+    <string name="big_burger_registration">Big Burger Rejestracja</string>
+    <string name="email_address">Adres Email</string>
+    <string name="password">Hasło</string>
+    <string name="streetRegistration">Ulica*</string>
+    <string name="houseRegistration">Nr. Domu*</string>
+    <string name="flatRegistration">Nr. mieszkania*</string>
+    <string name="postalCodeRegistration">Kod pocztowy</string>
+    <string name="CityRegistration">Miasto</string>
+    <string name="login">Zaloguj</string>
+    <string name="register_now">Zarejestruj się</string>
+    <string name="by_signing_up_you_agree_with_our">" Rejestrując się, zgadzasz się z naszymi"</string>
+    <string name="terms_amp_conditions">" [Zasady i Warunki]"</string>
+    <string name="save">Zapisz</string>
+    <string name="house">Nr. domu</string>
+    <string name="flat">Nr. mieszkania</string>
+    <string name="street">Ulica</string>
+    <string name="postal_code">Kod pocztowy</string>
+    <string name="city">Miasto</string>
+    <string name="back">Cofnij</string>
+    <string name="account">Konto</string>
+    <string name="menu">Menu</string>
+    <string name="orders">Zamówienia</string>
+</resources>
