@@ -2,7 +2,7 @@ package com.example.mobileapp.model;
 
 import android.widget.EditText;
 
-public class User {
+public class User{
     private String email;
     private String password;
     private String street;
