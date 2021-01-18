@@ -15,7 +15,7 @@
     <string name="terms_amp_conditions">" [Zasady i Warunki]"</string>
     <string name="save">Zapisz</string>
     <string name="house">Nr. domu</string>
-    <string name="flat">Nr. mieszkania</string>
+    <string name="flat">Nr. lokalu</string>
     <string name="street">Ulica</string>
     <string name="postal_code">Kod pocztowy</string>
     <string name="city">Miasto</string>
@@ -23,4 +23,7 @@
     <string name="account">Konto</string>
     <string name="menu">Menu</string>
     <string name="orders">Zamówienia</string>
+    <string name="communicate_logout">Komunikacja / Wyloguj</string>
+    <string name="logout">Wyloguj</string>
+    <string name="contact">Kontakt</string>
 </resources>

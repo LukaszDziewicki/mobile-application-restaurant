@@ -23,8 +23,11 @@
     <string name="flat" tools:ignore="DuplicateDefinition">Flat</string>
     <string name="city" tools:ignore="DuplicateDefinition">City</string>
     <string name="back">Back</string>
+    <string name="communicate_logout">Communicate / Logout</string>
     <string name="account">Account</string>
     <string name="menu">Menu</string>
     <string name="orders">Orders</string>
     <string name="app_name">Big Burger</string>
+    <string name="logout">Logout</string>
+    <string name="contact">Contact</string>
 </resources>
