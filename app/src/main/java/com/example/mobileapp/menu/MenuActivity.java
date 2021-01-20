@@ -1,22 +1,44 @@
 package com.example.mobileapp.menu;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
 import com.example.mobileapp.R;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.example.mobileapp.activities.LoginActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MenuActivity extends AppCompatActivity {
     private ListView menuListView;
     private List<Dish> listDishes;
+    private List<Dish> listOrderedDishes;
     private MenuAdapter menuAdapter;
     private Button confirmOrderButton;
-    private BottomSheetBehavior bottomSheetBehavior;
+    private ProgressBar progressBarMenu;
     int i = R.drawable.logo;
+
+    private View.OnClickListener onAddDishButtonListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Dish dish = (Dish) view.getTag();
+
+            //TODO if dish ammount == 0 nie dodawac do listy
+            listOrderedDishes.add(dish);
+            showToast("List : " + listOrderedDishes.toString());
+        }
+    };
+
+    private void showToast(String text) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +47,11 @@ public class MenuActivity extends AppCompatActivity {
 
         init();
         addDishesMenuList();
-
-        //getMenuFromDB();
-
         setMenuAdapter();
-        setConfirmOrderButtonListener();
+        menuAdapter.setOnAddDishButtonListener(onAddDishButtonListener);
+
+
+        setConfirmOrderButton();
     }
 
 
@@ -44,11 +66,9 @@ public class MenuActivity extends AppCompatActivity {
         listDishes = new ArrayList<>();
         menuListView = findViewById(R.id.list_view);
         confirmOrderButton = findViewById(R.id.confirmOrderButton);
+        progressBarMenu = findViewById(R.id.progressBarMenu);
+        listOrderedDishes = new ArrayList<>();
 
-
-        View bottomSheet = findViewById(R.id.bottom_sheet);
-        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
-        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
     }
 
     private void setMenuAdapter() {
@@ -63,16 +83,20 @@ public class MenuActivity extends AppCompatActivity {
         listDishes.add(new Dish(R.drawable.logo, "Burger 4", "czosnek / cebula / pieczarki", 22.99, "zł"));
         listDishes.add(new Dish(R.drawable.logo, "Burger 5", "czosnek / cebula / pieczarki", 22.99, "zł"));
         listDishes.add(new Dish(R.drawable.logo, "Burger 6", "czosnek / cebula / pieczarki", 22.99, "zł"));
-        listDishes.add(new Dish(R.drawable.logo, "Burger 5", "czosnek / cebula / pieczarki", 22.99, "zł"));
-        listDishes.add(new Dish(R.drawable.logo, "Burger 6", "czosnek / cebula / pieczarki", 22.99, "zł"));
+        listDishes.add(new Dish(R.drawable.logo, "Burger 7", "czosnek / cebula / pieczarki", 22.99, "zł"));
+        listDishes.add(new Dish(R.drawable.logo, "Burger 8", "czosnek / cebula / pieczarki", 22.99, "zł"));
     }
 
-    private void setConfirmOrderButtonListener() {
+    private void setConfirmOrderButton() {
         confirmOrderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                //startActivity(new Intent(getApplicationContext(), ConfirmOrderActivity.class));
             }
         });
+    }
+
+    public void back(View view){
+        finish();
     }
 }

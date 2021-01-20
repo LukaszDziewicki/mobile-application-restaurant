@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mobileapp.R;
+import com.example.mobileapp.database.DatabaseHelper;
+import com.example.mobileapp.model.User;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,6 +34,7 @@ public class UserProfileActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private String userId;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +44,7 @@ public class UserProfileActivity extends AppCompatActivity {
         getUserProfileInfo();
 
         setBackButtonListener();
+
         setSaveButtonListener();
 
 
@@ -60,6 +64,7 @@ public class UserProfileActivity extends AppCompatActivity {
         flat = findViewById(R.id.flatText);
         postalCode = findViewById(R.id.postalCodeText);
         city = findViewById(R.id.cityText);
+
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -91,10 +96,8 @@ public class UserProfileActivity extends AppCompatActivity {
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(UserProfileActivity.this, "Done", Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.INVISIBLE);
-
                             }
                         });
-
             }
         });
 

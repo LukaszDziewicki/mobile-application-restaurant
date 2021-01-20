@@ -1,18 +1,17 @@
 package com.example.mobileapp.model;
 
+import com.example.mobileapp.database.DatabaseHelper;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class Account implements AccountInterface {
+public class Account extends DatabaseHelper implements AccountInterface {
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
 
     private String email;
-    private String password;
 
-    public Account(String email, String password, FirebaseAuth firebaseAuth, FirebaseFirestore firebaseFirestore) {
+    public Account(String email, FirebaseAuth firebaseAuth, FirebaseFirestore firebaseFirestore) {
         this.email = email;
-        this.password = password;
         this.firebaseAuth = firebaseAuth;
         this.firebaseFirestore = firebaseFirestore;
     }
@@ -41,13 +40,5 @@ public class Account implements AccountInterface {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }

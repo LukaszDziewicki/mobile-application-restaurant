@@ -2,28 +2,29 @@ package com.example.mobileapp.model;
 
 import android.widget.EditText;
 
-public class User{
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+public class User extends Account{
+    private String id;
     private String email;
-    private String password;
     private String street;
     private String house;
     private String flat;
     private String postalCode;
     private String city;
 
-    public User(EditText email, EditText password, EditText street, EditText house, EditText flat, EditText postalCode, EditText city) {
-        this.email = email.getText().toString().trim();
-        this.password = password.getText().toString().trim();
+
+    public User(String email, FirebaseAuth firebaseAuth, FirebaseFirestore firebaseFirestore, EditText street, EditText house, EditText flat, EditText postalCode, EditText city) {
+        super(email, firebaseAuth, firebaseFirestore);
+        firebaseAuth = FirebaseAuth.getInstance();
+        this.id = firebaseAuth.getUid();
         this.street = street.getText().toString().trim();
         this.house = house.getText().toString().trim();
         this.flat = flat.getText().toString().trim();
         this.postalCode = postalCode.getText().toString().trim();
         this.city = city.getText().toString().trim();
-    }
 
-    public User(String email, String password) {
-        this.email = email;
-        this.password = password;
     }
 
 

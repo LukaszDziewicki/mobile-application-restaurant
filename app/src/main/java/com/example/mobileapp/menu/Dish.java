@@ -1,6 +1,8 @@
 package com.example.mobileapp.menu;
 
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.mobileapp.Const.Const;
 
@@ -15,13 +17,23 @@ public class Dish {
     private Button increaseAmount, decreaseAmount;
 
 
-
-    public Dish(int image, String nameDish, String descriptionDish, double costDish, String currency) {
+ public Dish(int image, String nameDish, String descriptionDish, double costDish, String currency) {
         this.image = image;
         this.nameDish = nameDish;
         this.descriptionDish = descriptionDish;
         this.costDish = costDish;
         this.currency = currency;
+    }
+
+    public Dish(TextView nameDishTextView, TextView costDishTextView, TextView currencyTextView, TextView amountTextView) {
+        this.nameDish = nameDishTextView.getText().toString();
+        this.currency = currencyTextView.getText().toString();
+       try {
+           this.costDish = Double.parseDouble(costDishTextView.getText().toString());
+           this.amount = Integer.valueOf(amountTextView.getText().toString());
+       }catch (NumberFormatException e){
+           e.printStackTrace();
+       }
     }
 
     public int getImage() {
@@ -95,6 +107,16 @@ public class Dish {
     public void decreaseAmount(){
         if(amount > 0){
             amount-=1;
+
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "nameDish='" + nameDish + '\'' +
+                ", costDish=" + costDish +
+                ", amount=" + amount +
+                '}';
     }
 }

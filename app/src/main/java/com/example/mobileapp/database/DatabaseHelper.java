@@ -1,16 +1,18 @@
 package com.example.mobileapp.database;
 
+import android.view.View;
+import android.widget.Toast;
+
+import com.example.mobileapp.activities.user.UserProfileActivity;
 import com.example.mobileapp.model.User;
 import com.example.mobileapp.menu.Dish;
 import com.example.mobileapp.model.Waiter;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 
 import java.util.List;
 
 public class DatabaseHelper implements DatabaseInterface{
-
-    public DatabaseHelper() {
-    }
-
 
     @Override
     public void addDish() {
@@ -29,6 +31,11 @@ public class DatabaseHelper implements DatabaseInterface{
 
     @Override
     public void addUser(User user) {
+
+    }
+
+    @Override
+    public void updateUser(User user) {
 
     }
 

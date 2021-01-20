@@ -44,8 +44,6 @@ public class AdminActivity extends Activity {
                     break;
  	            case R.id.favorite:
                     textView.setText("Favorite");
-
-
                     break;
                 case R.id.notification:
                     textView.setText("Notification");

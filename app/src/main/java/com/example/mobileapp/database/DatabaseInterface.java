@@ -16,6 +16,8 @@ public interface DatabaseInterface {
 
     void addUser(User user);
 
+    void updateUser(User user);
+
     void addWaiter(Waiter waiter);
 
     String getUserEmail(String userId);
