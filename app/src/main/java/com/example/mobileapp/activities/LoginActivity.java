@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.example.mobileapp.activities.admin.AdminActivity;
 import com.example.mobileapp.activities.user.UserActivity;
@@ -58,14 +57,18 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart(){
+    protected void onStart() {
         super.onStart();
-        if(firebaseAuth.getInstance().getCurrentUser() != null){
+        checkIsSomeoneLoggedIn();
+    }
+
+    private void checkIsSomeoneLoggedIn() {
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             checkUserAccessLevel(firebaseAuth.getCurrentUser().getUid());
         }
     }
 
-    private void init(){
+    private void init() {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
 

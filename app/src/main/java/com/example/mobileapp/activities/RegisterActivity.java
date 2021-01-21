@@ -28,12 +28,9 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;
 
     private EditText emailRegistration, passwordRegistration, streetRegistration, houseRegistration, flatRegistration, postalCodeRegistration, cityRegistration;
-    //TODO private Account userAccount;
 
     private Button registerButton, backToLoginButton;
     private ProgressBar progressBar;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,13 +57,9 @@ public class RegisterActivity extends AppCompatActivity {
         postalCodeRegistration = findViewById(R.id.postalCodeRegistration);
         cityRegistration = findViewById(R.id.cityRegistration);
 
-        //userAccount = new User(emailRegistration, passwordRegistration, streetRegistration, houseRegistration, flatRegistration, postalCodeRegistration, cityRegistration, firebaseAuth, firebaseFirestore);
-
         registerButton = findViewById(R.id.registerButton);
         backToLoginButton = findViewById(R.id.backToLoginButton);
         progressBar = findViewById(R.id.progressBar);
-
-
     }
 
     private void setRegisterButtonListenerValidateAndCreateUser(){
@@ -74,8 +67,6 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                //przypisaneie do obiektu acconut oszczedzajac miejsce TODO
-                // Account
 
                 String email = emailRegistration.getText().toString().trim();
                 String password = passwordRegistration.getText().toString().trim();

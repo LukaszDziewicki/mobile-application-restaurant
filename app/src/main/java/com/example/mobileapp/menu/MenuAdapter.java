@@ -8,11 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.mobileapp.R;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class MenuAdapter extends BaseAdapter {
@@ -68,16 +64,18 @@ public class MenuAdapter extends BaseAdapter {
             viewHolder.costDishTextView = listView.findViewById(R.id.costDish);
             viewHolder.currencyTextView = listView.findViewById(R.id.currency);
             viewHolder.increaseAmountButton = listView.findViewById(R.id.increaseAmount);
-            viewHolder.decreaseAmountButton = listView.findViewById(R.id.decreaseAmount);
             viewHolder.amountTextView = listView.findViewById(R.id.ammount);
+            viewHolder.decreaseAmountButton = listView.findViewById(R.id.decreaseAmount);
             viewHolder.addDishButton = listView.findViewById(R.id.addDish);
-
-
 
             viewHolder.addDishButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(onAddDishButtonListener != null ) onAddDishButtonListener.onClick(view);
+                    viewHolder.dish.setAmount(listDishes.get(position).getAmount());
+                    listDishes.get(position).setAmount(0);
+                    viewHolder.amountTextView.setText(String.valueOf(listDishes.get(position).getAmount()));
+
+                    if (onAddDishButtonListener != null) onAddDishButtonListener.onClick(view);
                 }
             });
 
@@ -94,8 +92,8 @@ public class MenuAdapter extends BaseAdapter {
         viewHolder.amountTextView.setText(String.valueOf(listDishes.get(position).getAmount()));
 
 
-        viewHolder.increaseAmountButton.setTag(new Integer(position));
-        viewHolder.decreaseAmountButton.setTag(new Integer(position));
+        viewHolder.increaseAmountButton.setTag(position);
+        viewHolder.decreaseAmountButton.setTag(position);
 
         viewHolder.dish = new Dish(
                 viewHolder.nameDishTextView,
@@ -104,10 +102,10 @@ public class MenuAdapter extends BaseAdapter {
                 viewHolder.amountTextView
         );
 
-        //TODO przekazac Dish do MenuActivity gdzie bedzie dodawany do listy i przekazywany do kolejnej aktywności
         viewHolder.addDishButton.setTag(viewHolder.dish);
 
-         viewHolder.increaseAmountButton.setOnClickListener(new View.OnClickListener() {
+
+        viewHolder.increaseAmountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 listDishes.get(position).increaseAmount();
@@ -123,39 +121,11 @@ public class MenuAdapter extends BaseAdapter {
                 viewHolder.amountTextView.setText(String.valueOf(listDishes.get(position).getAmount()));
             }
         });
-
-/*----------------------------------------------------------------------------------------------------------------
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context, "Position "+position, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        addDish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listOrderedDishes.add(listDishes.get(position));
-
-
-               // Toast.makeText(context, position + 1 +" position "+ " has been added to order" +" ammount :"+ listDishes.get(position).getAmount(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(context, listDishes.get(position).toString(), Toast.LENGTH_SHORT).show();
-
-
-                //ustawiam na 0 i wyswietlam
-                listDishes.get(position).setAmount(0);
-                amountTextView.setText(String.valueOf(listDishes.get(position).getAmount()));
-            }
-        });
-
-         */
-
-
         return listView;
     }
 
     public void setOnAddDishButtonListener(View.OnClickListener onAddDishButtonListener) {
-
         this.onAddDishButtonListener = onAddDishButtonListener;
+
     }
 }

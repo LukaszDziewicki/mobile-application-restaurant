@@ -46,11 +46,7 @@ public class UserActivity extends Activity implements NavigationView.OnNavigatio
         init();
         setToolbar();
         setEmailTextViewNav();
-
-
     }
-
-
 
     private void init(){
         toolbar = findViewById(R.id.toolbar);

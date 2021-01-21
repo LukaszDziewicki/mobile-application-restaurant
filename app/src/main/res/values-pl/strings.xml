@@ -26,4 +26,5 @@
     <string name="communicate_logout">Komunikacja / Wyloguj</string>
     <string name="logout">Wyloguj</string>
     <string name="contact">Kontakt</string>
+    <string name="confirm_order">Zatwierdz</string>
 </resources>

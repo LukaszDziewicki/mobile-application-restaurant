@@ -39,18 +39,10 @@ public class UserProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
-
         init();
         getUserProfileInfo();
-
         setBackButtonListener();
-
         setSaveButtonListener();
-
-
-
-
-
     }
 
     private void init() {

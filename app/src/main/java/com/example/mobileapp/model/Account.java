@@ -4,7 +4,7 @@ import com.example.mobileapp.database.DatabaseHelper;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class Account extends DatabaseHelper implements AccountInterface {
+public class Account extends DatabaseHelper {
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
 

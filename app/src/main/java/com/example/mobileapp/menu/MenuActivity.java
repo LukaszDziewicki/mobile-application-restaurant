@@ -10,8 +10,9 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.mobileapp.Const.Const;
 import com.example.mobileapp.R;
-import com.example.mobileapp.activities.LoginActivity;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,22 +24,19 @@ public class MenuActivity extends AppCompatActivity {
     private MenuAdapter menuAdapter;
     private Button confirmOrderButton;
     private ProgressBar progressBarMenu;
-    int i = R.drawable.logo;
 
     private View.OnClickListener onAddDishButtonListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Dish dish = (Dish) view.getTag();
-
-            //TODO if dish ammount == 0 nie dodawac do listy
-            listOrderedDishes.add(dish);
-            showToast("List : " + listOrderedDishes.toString());
+            if (dish.getAmount() > 0) {
+                listOrderedDishes.add(dish);
+                showToast(dish.getNameDish() + " has been added. Amount : " + dish.getAmount() + "X ");
+            } else {
+                showToast(" " + dish.getAmount());
+            }
         }
     };
-
-    private void showToast(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +48,8 @@ public class MenuActivity extends AppCompatActivity {
         setMenuAdapter();
         menuAdapter.setOnAddDishButtonListener(onAddDishButtonListener);
 
-
         setConfirmOrderButton();
     }
-
-
 
     @Override
     public void onBackPressed() {
@@ -68,6 +63,7 @@ public class MenuActivity extends AppCompatActivity {
         confirmOrderButton = findViewById(R.id.confirmOrderButton);
         progressBarMenu = findViewById(R.id.progressBarMenu);
         listOrderedDishes = new ArrayList<>();
+        progressBarMenu.setVisibility(View.INVISIBLE);
 
     }
 
@@ -77,26 +73,29 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void addDishesMenuList() {
-        listDishes.add(new Dish(R.drawable.logo, "Burger 1", "czosnek / cebula / pieczarki", 22.99, "zł"));
-        listDishes.add(new Dish(R.drawable.logo, "Burger 2", "czosnek / cebula / pieczarki", 22.99, "zł"));
-        listDishes.add(new Dish(R.drawable.logo, "Burger 3", "czosnek / cebula / pieczarki", 22.99, "zł"));
-        listDishes.add(new Dish(R.drawable.logo, "Burger 4", "czosnek / cebula / pieczarki", 22.99, "zł"));
-        listDishes.add(new Dish(R.drawable.logo, "Burger 5", "czosnek / cebula / pieczarki", 22.99, "zł"));
-        listDishes.add(new Dish(R.drawable.logo, "Burger 6", "czosnek / cebula / pieczarki", 22.99, "zł"));
-        listDishes.add(new Dish(R.drawable.logo, "Burger 7", "czosnek / cebula / pieczarki", 22.99, "zł"));
-        listDishes.add(new Dish(R.drawable.logo, "Burger 8", "czosnek / cebula / pieczarki", 22.99, "zł"));
+        listDishes.add(new Dish(R.drawable.logo, "Burger 1", "czosnek / cebula / pieczarki", 22.99, Const.CURRENCY_PLN));
+        listDishes.add(new Dish(R.drawable.logo, "Burger 2", "czosnek / cebula / pieczarki", 22.99, Const.CURRENCY_PLN));
+        listDishes.add(new Dish(R.drawable.logo, "Burger 3", "czosnek / cebula / pieczarki", 22.99, Const.CURRENCY_PLN));
+        listDishes.add(new Dish(R.drawable.logo, "Burger 4", "czosnek / cebula / pieczarki", 22.99, Const.CURRENCY_PLN));
+        listDishes.add(new Dish(R.drawable.logo, "Burger 5", "czosnek / cebula / pieczarki", 22.99, Const.CURRENCY_PLN));
+        listDishes.add(new Dish(R.drawable.logo, "Burger 6", "czosnek / cebula / pieczarki", 22.99, Const.CURRENCY_PLN));
     }
 
     private void setConfirmOrderButton() {
         confirmOrderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressBarMenu.setVisibility(View.VISIBLE);
                 //startActivity(new Intent(getApplicationContext(), ConfirmOrderActivity.class));
             }
         });
     }
 
-    public void back(View view){
+    public void back(View view) {
         finish();
+    }
+
+    private void showToast(String text) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 }

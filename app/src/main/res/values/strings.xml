@@ -30,4 +30,5 @@
     <string name="app_name">Big Burger</string>
     <string name="logout">Logout</string>
     <string name="contact">Contact</string>
+    <string name="confirm_order">Confirm Order</string>
 </resources>
