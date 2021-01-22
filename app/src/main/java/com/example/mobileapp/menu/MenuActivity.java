@@ -79,6 +79,7 @@ public class MenuActivity extends AppCompatActivity {
         listDishes.add(new Dish(R.drawable.logo, "Burger 4", "czosnek / cebula / pieczarki", 22.99, Const.CURRENCY_PLN));
         listDishes.add(new Dish(R.drawable.logo, "Burger 5", "czosnek / cebula / pieczarki", 22.99, Const.CURRENCY_PLN));
         listDishes.add(new Dish(R.drawable.logo, "Burger 6", "czosnek / cebula / pieczarki", 22.99, Const.CURRENCY_PLN));
+        listDishes.add(new Dish(R.drawable.logo, "Burger 7", "czosnek / cebula / pieczarki", 22.99, Const.CURRENCY_PLN));
     }
 
     private void setConfirmOrderButton() {
