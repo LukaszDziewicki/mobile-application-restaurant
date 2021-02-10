@@ -22,15 +22,13 @@ public class AdminActivity extends Activity {
          init();
 
 
-         textView.setText("Home");
+         textView.setText(R.string.house);
          navigationView.setOnNavigationItemSelectedListener(nav);
     }
 
     private void init(){
         navigationView = findViewById(R.id.bottom_nav);
-
         textView = findViewById(R.id.textview);
-
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener nav = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -39,14 +37,14 @@ public class AdminActivity extends Activity {
 
             switch (menuItem.getItemId()) {
                 case R.id.home:
-                    textView.setText("Home");
+                    textView.setText(R.string.home);
                     addDish();
                     break;
  	            case R.id.favorite:
-                    textView.setText("Favorite");
+                    textView.setText(R.string.favorite);
                     break;
                 case R.id.notification:
-                    textView.setText("Notification");
+                    textView.setText(R.string.notification);
                     break;
             }
             return true;

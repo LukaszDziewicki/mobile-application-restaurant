@@ -27,7 +27,6 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;
 
     private EditText emailRegistration, passwordRegistration, streetRegistration, houseRegistration, flatRegistration, postalCodeRegistration, cityRegistration;
-
     private Button registerButton, backToLoginButton;
     private ProgressBar progressBar;
 
@@ -97,7 +96,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     private boolean checkRegisterValidation(String email, String password) {
 
-
         if (TextUtils.isEmpty(email)) {
             emailRegistration.setError("Email is Required.");
             return false;
@@ -113,10 +111,6 @@ public class RegisterActivity extends AppCompatActivity {
             return false;
         }
 
-        if (password.length() < 6) {
-            passwordRegistration.setError("password must be >= 6 characters");
-            return false;
-        }
         return true;
     }
 

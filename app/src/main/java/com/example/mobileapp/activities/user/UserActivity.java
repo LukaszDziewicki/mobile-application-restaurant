@@ -11,17 +11,14 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-
 import com.example.mobileapp.activities.Activity;
 import com.example.mobileapp.Const.Const;
 import com.example.mobileapp.menu.MenuActivity;
 import com.example.mobileapp.R;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import javax.annotation.Nullable;
@@ -30,14 +27,8 @@ import javax.annotation.Nullable;
 public class UserActivity extends Activity implements NavigationView.OnNavigationItemSelectedListener{
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
-
     private NavigationView navigationView;
     private TextView emailTextViewNav;
-
-    private FirebaseAuth firebaseAuth;
-    private FirebaseFirestore firebaseFirestore;
-    private String userId;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +45,7 @@ public class UserActivity extends Activity implements NavigationView.OnNavigatio
 
         navigationView = findViewById(R.id.navigation_view);
         View headerView = navigationView.getHeaderView(0);
-        emailTextViewNav = (TextView) headerView.findViewById(R.id.emailTextViewNav);
-
-        firebaseFirestore = FirebaseFirestore.getInstance();
-        firebaseAuth = FirebaseAuth.getInstance();
-        userId = firebaseAuth.getUid();
+        emailTextViewNav = headerView.findViewById(R.id.emailTextViewNav);
     }
 
     @Override
@@ -99,7 +86,7 @@ public class UserActivity extends Activity implements NavigationView.OnNavigatio
     }
 
     private void setEmailTextViewNav() {
-        DocumentReference documentReference = firebaseFirestore.collection("Users").document(userId);
+        DocumentReference documentReference = getFirebaseFirestore().collection("Users").document(getUserId());
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {

@@ -9,10 +9,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.mobileapp.R;
-import com.example.mobileapp.database.DatabaseHelper;
-import com.example.mobileapp.model.User;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,7 +26,6 @@ public class UserProfileActivity extends AppCompatActivity {
     private TextView email;
     private EditText street, house, flat, postalCode, city;
     private ProgressBar progressBar;
-
     private FirebaseFirestore firebaseFirestore;
     private FirebaseAuth firebaseAuth;
     private String userId;

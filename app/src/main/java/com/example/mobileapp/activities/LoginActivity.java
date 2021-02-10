@@ -15,6 +15,7 @@ import com.example.mobileapp.activities.admin.AdminActivity;
 import com.example.mobileapp.activities.user.UserActivity;
 import com.example.mobileapp.activities.waiter.WaiterActivity;
 import com.example.mobileapp.R;
+import com.example.mobileapp.model.Account;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
@@ -32,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginButton;
     private ProgressBar progressBar;
 
-
+    private Account account;
 
 
     @Override
@@ -47,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = emailTb.getText().toString().trim();
                 String password = passwordTb.getText().toString().trim();
+
 
                 if(checkLoginValidation(email, password)){
                     progressBar.setVisibility(View.VISIBLE);
@@ -71,11 +73,15 @@ public class LoginActivity extends AppCompatActivity {
     private void init() {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
+        account = new Account(firebaseAuth, firebaseFirestore);
 
         emailTb = findViewById(R.id.emailTb);
         passwordTb = findViewById(R.id.passwordTb);
+
         loginButton = findViewById(R.id.loginButton);
         progressBar = findViewById(R.id.progressBar);
+
+
     }
 
     private boolean checkLoginValidation(String email, String password) {
@@ -93,6 +99,7 @@ public class LoginActivity extends AppCompatActivity {
             passwordTb.setError("password must be >= 6 characters");
             return false;
         }
+
         return true;
     }
 
@@ -116,6 +123,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void checkUserAccessLevel(String uid) {
         DocumentReference documentReference = firebaseFirestore.collection("Users").document(uid);
+
         documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {

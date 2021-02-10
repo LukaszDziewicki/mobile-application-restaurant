@@ -1,18 +1,28 @@
 package com.example.mobileapp.database;
 
-import android.view.View;
-import android.widget.Toast;
-
-import com.example.mobileapp.activities.user.UserProfileActivity;
 import com.example.mobileapp.model.User;
 import com.example.mobileapp.menu.Dish;
 import com.example.mobileapp.model.Waiter;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
-public class DatabaseHelper implements DatabaseInterface{
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class DatabaseHelper implements DatabaseInterface {
+    private final FirebaseAuth firebaseAuth;
+    private final FirebaseFirestore firebaseFirestore;
+    private String userId;
+
+    public DatabaseHelper() {
+        this.firebaseAuth = FirebaseAuth.getInstance();
+        this.firebaseFirestore = FirebaseFirestore.getInstance();
+        this.userId = firebaseAuth.getUid();
+    }
 
     @Override
     public void addDish() {
@@ -45,7 +55,7 @@ public class DatabaseHelper implements DatabaseInterface{
     }
 
     @Override
-    public String getUserEmail(String userId) {
+    public String getUserEmail() {
         return null;
     }
 
@@ -53,4 +63,5 @@ public class DatabaseHelper implements DatabaseInterface{
     public User getUserData(String userId) {
         return null;
     }
+
 }

@@ -74,7 +74,6 @@ public class MenuAdapter extends BaseAdapter {
                     viewHolder.dish.setAmount(listDishes.get(position).getAmount());
                     listDishes.get(position).setAmount(0);
                     viewHolder.amountTextView.setText(String.valueOf(listDishes.get(position).getAmount()));
-
                     if (onAddDishButtonListener != null) onAddDishButtonListener.onClick(view);
                 }
             });

@@ -20,7 +20,7 @@ public interface DatabaseInterface {
 
     void addWaiter(Waiter waiter);
 
-    String getUserEmail(String userId);
+    String getUserEmail();
 
     User getUserData(String userId);
 
